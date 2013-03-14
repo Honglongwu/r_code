@@ -1,3 +1,4 @@
+# this Rscript can be used to draw the NGS reads that located on target region
 setwd(dir="/Users/user/bin/R/")
 library(ggplot2)                                                                                                                                             
 previous_theme <- theme_set(theme_bw())
