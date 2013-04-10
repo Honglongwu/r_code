@@ -2,18 +2,15 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass ctex-article
+\textclass ctex-book
 \begin_preamble
-
+\DeclareRobustCommand\nobreakspace{\leavevmode\nobreak\ }
 \end_preamble
-\options UTF8, adobefonts
+\options UTF8,adobefonts
 \use_default_options true
-\begin_modules
-knitr
-\end_modules
 \maintain_unincluded_children false
 \language chinese-simplified
-\language_package default
+\language_package %
 \inputencoding utf8-plain
 \fontencoding global
 \font_roman default
@@ -25,7 +22,6 @@ knitr
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-\font_cjk utf8
 
 \graphics default
 \default_output_format pdf4
@@ -34,17 +30,7 @@ knitr
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref true
-\pdf_bookmarks true
-\pdf_bookmarksnumbered false
-\pdf_bookmarksopen false
-\pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
-\pdf_pdfborder false
-\pdf_colorlinks false
-\pdf_backref section
-\pdf_pdfusetitle true
-\pdf_quoted_options "unicode=false"
+\use_hyperref false
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -83,11 +69,133 @@ R Graphics Cookbook
 \end_layout
 
 \begin_layout Author
-作者：winston chang 翻译：吴红龙
+作者： winston 译者：吴红龙
 \end_layout
 
-\begin_layout Date
-04/09/13
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+前言
+\end_layout
+
+\begin_layout Chapter
+R 基础
+\end_layout
+
+\begin_layout Section
+R包安装
+\end_layout
+
+\begin_layout Section
+R包加载
+\end_layout
+
+\begin_layout Section
+固定分割的文本数据加载
+\end_layout
+
+\begin_layout Section
+Excel数据加载
+\end_layout
+
+\begin_layout Section
+SPSS数据加载
+\end_layout
+
+\begin_layout Chapter
+条形图
+\end_layout
+
+\begin_layout Section
+创建散点图
+\end_layout
+
+\begin_layout Section
+创建线图
+\end_layout
+
+\begin_layout Section
+创建条形图
+\end_layout
+
+\begin_layout Section
+创建柱状图
+\end_layout
+
+\begin_layout Section
+创建盒型图
+\end_layout
+
+\begin_layout Section
+绘制函数曲线
+\end_layout
+
+\begin_layout Chapter
+线形图
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Chapter
+散点图
+\end_layout
+
+\begin_layout Chapter
+描述性数据分布
+\end_layout
+
+\begin_layout Chapter
+注释
+\end_layout
+
+\begin_layout Chapter
+坐标轴
+\end_layout
+
+\begin_layout Chapter
+图形全局参数控制
+\end_layout
+
+\begin_layout Chapter
+图例
+\end_layout
+
+\begin_layout Chapter
+图层
+\end_layout
+
+\begin_layout Chapter
+颜色的使用
+\end_layout
+
+\begin_layout Chapter
+图形实例
+\end_layout
+
+\begin_layout Chapter
+图形输出格式
+\end_layout
+
+\begin_layout Chapter
+数据处理
+\end_layout
+
+\begin_layout Chapter
+A.
+ ggplot2 介绍
+\end_layout
+
+\begin_layout Chapter
+索引
 \end_layout
 
 \end_body
