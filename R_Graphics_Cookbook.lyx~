@@ -8,6 +8,9 @@
 \end_preamble
 \options UTF8,adobefonts
 \use_default_options true
+\begin_modules
+knitr
+\end_modules
 \maintain_unincluded_children false
 \language chinese-simplified
 \language_package %
@@ -30,7 +33,16 @@
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry false
 \use_amsmath 1
@@ -89,6 +101,64 @@ LatexCommand tableofcontents
 R 基础
 \end_layout
 
+\begin_layout Standard
+本章包含的基础知识：安装和使用包以及加载数据。
+\end_layout
+
+\begin_layout Standard
+书中所有的实例需要在你的电脑上安装ggplot2和gcookbook两个包，如果你想快速开始的话，可以这样做：
+\end_layout
+
+\begin_layout Standard
+install.packages(c("ggplot2","gcookbook"))
+\end_layout
+
+\begin_layout Standard
+然后在运行本书中例子的过程中，你要加载他们使用如下命令：
+\end_layout
+
+\begin_layout Standard
+library(ggplot2)
+\end_layout
+
+\begin_layout Standard
+library(gcookbook)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data = mtcars, aes(x = mpg, y = cyl, color=disp))
+\end_layout
+
+\begin_layout Plain Layout
+
+p + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 R包安装
 \end_layout
@@ -115,6 +185,142 @@ SPSS数据加载
 
 \begin_layout Section
 创建散点图
+\end_layout
+
+\begin_layout Standard
+问题：创建一个散点图
+\end_layout
+
+\begin_layout Standard
+解决方案：用plot() 绘制散点图，传递x值向量与y值向量。
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(mtcars$wt, mtcars$mpg)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+图2-1.
+ 基本图形函数绘制散点图
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mtcars, aes(x = wt, y = mpg)) + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = pressure, aes(x = temperature, y = pressure)) + geom_line()
+ + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myfun <- function(xvar)
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+	1/ (1 + exp(-xvar + 10))
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = data.frame(x=c(0,20)), aes(x = x)) + stat_function(fun=myfun)
+ + geom_line()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
