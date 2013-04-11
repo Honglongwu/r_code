@@ -278,6 +278,10 @@ ggplot(data = pressure, aes(x = temperature, y = pressure)) + geom_line()
 
 \end_layout
 
+\begin_layout Section
+创建线图
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -324,11 +328,117 @@ ggplot(data = data.frame(x=c(0,20)), aes(x = x)) + stat_function(fun=myfun,
 \end_layout
 
 \begin_layout Section
-创建线图
+创建条形图
 \end_layout
 
-\begin_layout Section
-创建条形图
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = pg_mean, aes(x = group, y = weight)) + geom_bar(stat = "identity",
+fill = "lightblue", color = "black")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = BOD, aes(x = factor(Time) , y = demand)) + geom_bar(stat =
+ "identity")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+csub <- subset(climate, Source == "Berkeley" & Year >= 1900)
+\end_layout
+
+\begin_layout Plain Layout
+
+csub$pos <- csub$Anomaly10y >=0
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(csub, aes(x=Year, y = Anomaly10y, fill = pos)) + geom_bar(stat="identity"
+) + scale_fill_manual(values=c("red","blue"),guide=F)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
