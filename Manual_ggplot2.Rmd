@@ -96,6 +96,7 @@ lline <- lw + theme(panel.grid.major=element_line(color="black",linetype="dashed
 lline
 ```
 
+in the following days, I will add more example with ggplot2.
 
 
 

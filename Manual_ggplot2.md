@@ -249,6 +249,7 @@ lline
 ![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-96.png) 
 
 
+in the following days, I will add more example with ggplot2.
 
 
 
