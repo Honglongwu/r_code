@@ -1,4 +1,4 @@
 r_code
 ======
-this typo contains much R scripts that I test in general word and for fun. if you have any other question , please contact with me.
+this typo contains some R scripts that I tested in general work or for fun. if you have any other question , please contact with me.
 email: wuhonglong.china@gmail.com
