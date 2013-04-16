@@ -710,11 +710,225 @@ opage$AgeGroup)))
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+clim <- subset(climate, Source=="Berkeley", select=c("Year","Anomaly10y","Unc10y
+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(clim, aes(x=Year,y=Anomaly10y)) + geom_ribbon(aes(ymin=Anomaly10y-Unc10y,
+ymax=Anomaly10y+Unc10y),alpha=.2) + geom_line()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Chapter
 散点图
+\end_layout
+
+\begin_layout Standard
+散点图：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(heightweight, aes(x=ageYear, y=heightIn, colour=sex, shape=sex ))
+ + geom_point(size=3,alpha=.3) + xlab("Age Per Year") + ylab("Height In")
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+添加梯度：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(heightweight, aes(x=weightLb, y=heightIn, fill=ageYear)) + geom_point(sha
+pe=21, size=2.5) + scale_fill_gradient(low="white", high="black",breaks=12:17)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+使用area：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(heightweight, aes(x=ageYear, y=heightIn, size=weightLb, colour=sex))
+ + geom_point(alpha=.3) + scale_size_area() + scale_color_brewer(palette="Set1")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+使用stat_bin2d 避免过多点的overlap：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- ggplot(diamonds, aes(x=carat, y=price)) + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- a+ stat_bin2d(bins=100) + scale_fill_gradient(low="lightblue",high="red",li
+mits=c(0,6000))
+\end_layout
+
+\begin_layout Plain Layout
+
+b
+\end_layout
+
+\begin_layout Plain Layout
+
+c <- a + stat_binhex()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
