@@ -940,6 +940,273 @@ c
 描述性数据分布
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(faithful, aes(x=waiting)) + geom_histogram(binwidth=5)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+density line 例子：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(faithful, aes(x=waiting)) + geom_density()
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- ggplot(faithful, aes(x=waiting)) + geom_freqpoly()
+\end_layout
+
+\begin_layout Plain Layout
+
+b
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+boxplot 例子：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(MASS)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(birthwt, aes(x=factor(race),y=bwt)) + geom_boxplot()
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- ggplot(birthwt, aes(x=factor(race), y=bwt)) + geom_boxplot(outlier.shape=21,
+outlier.size=4) + stat_summary(fun.y="mean",geom="point", shape=21, size=4,fill="r
+ed")
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+violin 例子：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(heightweight, aes(x=sex, y=heightIn)) + geom_violin()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+dot例子：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+countries2009 <- subset(countries, Year==2009 & healthexp>2000)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(countries2009, aes(x=infmortality))
+\end_layout
+
+\begin_layout Plain Layout
+
+p + geom_dotplot() + geom_rug()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+density 例子：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+a<-ggplot(faithful, aes(x=eruptions, y=waiting)) + stat_density2d() + geom_point
+()
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 注释
 \end_layout
