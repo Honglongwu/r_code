@@ -1367,6 +1367,199 @@ b
 坐标轴
 \end_layout
 
+\begin_layout Standard
+调整坐标刻度
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<axes ajust>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data = PlantGrowth, aes(x = group, y= weight))
+\end_layout
+
+\begin_layout Plain Layout
+
+a<-p + geom_boxplot()
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- p +geom_boxplot() + coord_flip() + scale_x_discrete(limits = rev(levels(Pla
+ntGrowth$group))) + scale_y_continuous(limits=c(0,8), breaks=c(1,2,4,8))
+ + theme(axis.text.x=theme_blank(), axis.ticks.x=theme_blank())
+\end_layout
+
+\begin_layout Plain Layout
+
+b
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+调整刻度线：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data = heightweight, aes(x=ageYear, y=heightIn)) + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+p + theme_bw() + theme(panel.grid.major=element_line(color="red", linetype="dashed
+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+log坐标刻度线绘制：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(MASS)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(scales)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(Animals, aes(x=body, y=brain, label=rownames(Animals))) + geom_text(size=
+3) + scale_x_log10() + scale_y_log10(breaks=trans_breaks("log10", function(x)
+ 10^x), labels=trans_format("log10",math_format(10^.x))) + annotation_logticks()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+circle 图绘制：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = wind, aes(x=DirCat, fill=SpeedCat)) + coord_polar() + geom_histogr
+am()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 图形全局参数控制
 \end_layout
