@@ -1188,8 +1188,8 @@ library(gcookbook)
 
 \begin_layout Plain Layout
 
-a<-ggplot(faithful, aes(x=eruptions, y=waiting)) + stat_density2d(aes(alpha=..dens
-ity),geom="tile") + geom_point()
+a<-ggplot(faithful, aes(x=eruptions, y=waiting)) + stat_density2d() + geom_point
+()
 \end_layout
 
 \begin_layout Plain Layout
@@ -1211,12 +1211,414 @@ a
 注释
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+p<- ggplot(data=faithful, aes(x=eruptions, y=waiting)) + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+p + annotate("text", x = 3, y = 48, label = "Group1") + annotate("text",
+ x = 4.5, y= 66, label="Group2")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+箭头
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(grid)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(subset(climate,Source=="Berkeley"), aes(x=Year, y=Anomaly10y))
+ + geom_line()
+\end_layout
+
+\begin_layout Plain Layout
+
+p + annotate("segment", x = 1950, xend=1980, y=-.25, yend=-.25, arrow=arrow(ends="
+both", angle=90,length=unit(.2, "cm"))) + annotate("segment", x=1850, xend=1820,
+ y=-.8, yend=-.95, colour="blue",size=2, arrow=arrow()) + annotate("rect",
+ xmin=1950, xmax=1980, ymin=-1, ymax=1, fill="blue", alpha=.4)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+误差线：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(subset(cabbage_exp, Cultivar == "c39"), aes(x = Date, y = Weight))
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- p + geom_bar(fill="white", color="black") + geom_errorbar(aes(ymin=Weight-s
+e, ymax=Weight+se), width=.2)
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- p + geom_line(aes(group=1)) + geom_point(size=10) + geom_errorbar(aes(ymin=
+Weight-se, ymax=Weight+se), width=.2)
+\end_layout
+
+\begin_layout Plain Layout
+
+b
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 坐标轴
 \end_layout
 
+\begin_layout Standard
+调整坐标刻度
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<axes ajust>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data = PlantGrowth, aes(x = group, y= weight))
+\end_layout
+
+\begin_layout Plain Layout
+
+a<-p + geom_boxplot()
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- p +geom_boxplot() + coord_flip() + scale_x_discrete(limits = rev(levels(Pla
+ntGrowth$group))) + scale_y_continuous(limits=c(0,8), breaks=c(1,2,4,8))
+ + theme(axis.text.x=theme_blank(), axis.ticks.x=theme_blank())
+\end_layout
+
+\begin_layout Plain Layout
+
+b
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+调整刻度线：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data = heightweight, aes(x=ageYear, y=heightIn)) + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+p + theme_bw() + theme(panel.grid.major=element_line(color="red", linetype="dashed
+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+log坐标刻度线绘制：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(MASS)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(scales)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(Animals, aes(x=body, y=brain, label=rownames(Animals))) + geom_text(size=
+3) + scale_x_log10() + scale_y_log10(breaks=trans_breaks("log10", function(x)
+ 10^x), labels=trans_format("log10",math_format(10^.x))) + annotation_logticks()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+circle 图绘制：
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = wind, aes(x=DirCat, fill=SpeedCat)) + coord_polar() + geom_histogr
+am()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 图形全局参数控制
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=heightweight, aes(x=ageYear, y=heightIn)) + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- p + ggtitle("age and height of
+\backslash
+n school children")
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- a + theme(plot.title=element_text(size=I(3),lineheight=.9, family="Times",
+ face="italic", color="red"))
+\end_layout
+
+\begin_layout Plain Layout
+
+b
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter

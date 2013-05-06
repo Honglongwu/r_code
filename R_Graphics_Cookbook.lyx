@@ -1564,6 +1564,63 @@ am()
 图形全局参数控制
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=heightweight, aes(x=ageYear, y=heightIn)) + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- p + ggtitle("age and height of
+\backslash
+n school children")
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- a + theme(plot.title=element_text(size=I(16),lineheight=.9, family="Times",
+ face="italic", color="red"))
+\end_layout
+
+\begin_layout Plain Layout
+
+b
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 图例
 \end_layout
