@@ -1625,6 +1625,45 @@ b
 图例
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(PlantGrowth, aes(x=group, y=weight, fill=group)) + geom_boxplot()
+\end_layout
+
+\begin_layout Plain Layout
+
+p
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 图层
 \end_layout
