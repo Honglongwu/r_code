@@ -1668,8 +1668,117 @@ p
 图层
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(mpg, aes(x=displ, y=hwy)) + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- p + facet_grid(drv~.)
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- p + facet_wrap(~class, ncol=4)
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+b
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 颜色的使用
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=uspopage, aes(x=Year, y=Thousands, fill=AgeGroup)) + geom_area(
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+a<- p + scale_fill_grey()
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+b<- p+ scale_fill_grey(start=.7, end=0)
+\end_layout
+
+\begin_layout Plain Layout
+
+b
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
