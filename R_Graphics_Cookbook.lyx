@@ -1785,6 +1785,112 @@ b
 图形实例
 \end_layout
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+pres_rating <- data.frame(rating = as.numeric(presidents), year = as.numeric(floor(
+time(presidents))), quarter = as.numeric(cycle(presidents)))
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(pres_rating, aes(x=year, y = quarter, fill=rating))
+\end_layout
+
+\begin_layout Plain Layout
+
+p + geom_tile() + scale_x_continuous(breaks=seq(1940,1976, by=4)) + scale_y_reve
+rse() + scale_fill_gradient2(low="red", high="blue", midpoint=50, limits=c(0,100
+))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+地图
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(gcookbook)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(maps)
+\end_layout
+
+\begin_layout Plain Layout
+
+east_asia <- map_data("world",region=c("China","Japan","North Korea","South
+ Korea"))
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(east_asia, aes(x=long, y=lat, group=group,fill=region)) + geom_polyg
+on(color="black")
+\end_layout
+
+\begin_layout Plain Layout
+
+p + scale_fill_brewer(palette="Set1")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 图形输出格式
 \end_layout
